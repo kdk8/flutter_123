@@ -7,6 +7,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,42 +42,80 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Row(
         children: [
-          Align(
-            alignment: Alignment.centerLeft, // Menempatkan teks di sebelah kiri
-            child: Text(
-              "Pembimbing Akademik (PA)",
-              style: TextStyle(fontSize: 20),
+          // Sidebar
+          Container(
+            width: 200,
+            color: Colors.blueGrey,
+            child: Column(
+              children: [
+                DrawerHeader(
+                  child: Text(
+                    'MENU',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey,
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.home, color: Colors.white),
+                  title: Text('Home', style: TextStyle(color: Colors.white)),
+                ),
+                ListTile(
+                  leading: Icon(Icons.settings, color: Colors.white),
+                  title:
+                      Text('Settings', style: TextStyle(color: Colors.white)),
+                ),
+                ListTile(
+                  leading: Icon(Icons.contact_page, color: Colors.white),
+                  title: Text('Contact', style: TextStyle(color: Colors.white)),
+                ),
+              ],
             ),
           ),
-          ClipOval(
-            child: Image.network(
-              "https://www.google.com/imgres?q=gambar%20format%20jpg&imgurl=https%3A%2F%2Ffileinfo.com%2Fimg%2Fss%2Fxl%2Fjpg_44-2.jpg&imgrefurl=https%3A%2F%2Ffileinfo.com%2Fextension%2Fjpg&docid=0OJPsWXk41YY4M&tbnid=c9N72fqs210o-M&vet=12ahUKEwjcwoTwzp6JAxUoR2wGHa7jGIEQM3oFCIABEAA..i&w=2400&h=1599&hcb=2&ved=2ahUKEwjcwoTwzp6JAxUoR2wGHa7jGIEQM3oFCIABEAA",
-              height: 200, // Disesuaikan agar proporsional dengan bentuk bulat
-              width: 200,
-              fit: BoxFit.cover, // Menyesuaikan gambar dengan bingkai bulat
+          // Main Content Area (Expanded)
+          Expanded(
+            child: Column(
+              children: [
+                // Header
+                Container(
+                  height: 50,
+                  color: Colors.blue,
+                  child: Center(
+                    child: Text(
+                      'Data Psikolog',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
+                    ),
+                  ),
+                ),
+                // Content
+                Expanded(
+                  child: Container(
+                    color: Colors.white,
+                    child: Center(
+                      child: Text(
+                        'DATA',
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-          Row(
-            children: [
-              Icon(Icons.person),
-              Text(" I Kadek Santika"),
-            ],
-          ),
-          Row(
-            children: [
-              Icon(Icons.email),
-              Text("kadeksantika1010@gmail.com"),
-            ],
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-     ),
-);
-}
+      ),
+    );
+  }
 }

@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 // Header
                 Container(
                   height: 50,
-                  color: Colors.blue,
+                 color: Colors.blue,
                   child: Center(
                     child: Text(
                       'Data Psikolog',
